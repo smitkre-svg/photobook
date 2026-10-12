@@ -91,6 +91,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--accent)}
 .sp{cursor:pointer;flex:0 0 auto;display:flex;flex-direction:column;align-items:center}
 .sp canvas{display:block;width:100%;height:auto;border-radius:3px;background:#fff;box-shadow:0 0 0 .5px var(--line2),0 1px 4px rgba(0,0,0,.16)}
 .sp.on canvas{box-shadow:0 0 0 3px var(--accent),0 1px 4px rgba(0,0,0,.16)}
+.sp{position:relative}.spm{position:absolute;top:3px;right:3px;width:22px;height:22px;border:0;border-radius:11px;background:rgba(0,0,0,.55);color:#fff;font-size:15px;line-height:20px;padding:0;cursor:pointer;opacity:0}.sp:hover .spm,.sp.on .spm{opacity:1}@media(pointer:coarse){.spm{opacity:1}}
 .sp .lb{margin-top:6px;padding:1px 9px;border-radius:9px;font-size:11px;color:var(--muted);white-space:nowrap}
 .sp.on .lb{background:var(--accent);color:#fff}
 
@@ -156,6 +157,7 @@ h3:first-child{margin-top:0}
 .btn.tp .tpv{max-width:100%;overflow-wrap:anywhere}
 .fontbtn{width:100%;height:36px;display:flex;justify-content:space-between;align-items:center;margin:4px 0 8px;font-size:15px;padding:0 10px}
 .fontbtn small{font:11px var(--f-ui);color:var(--muted)}
+.fbar{margin:0 0 6px}.fbar input{width:100%;box-sizing:border-box}.fbtns{margin:0 0 6px}
 .fontlist{max-height:260px;overflow:auto;border:1px solid var(--line2);border-radius:10px;margin:-2px 0 10px;background:var(--field)}
 .fontlist .fg{position:sticky;top:0;background:var(--surface);font:600 10.5px var(--f-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:6px 10px 4px}
 .fontlist .fi{display:flex;justify-content:space-between;align-items:center;width:100%;border:0;background:transparent;color:inherit;padding:7px 10px;font-size:16px;cursor:pointer;text-align:left}
@@ -320,10 +322,12 @@ h3:first-child{margin-top:0}
     <nav id="tabs" aria-label="Інструменти">
       <button data-tab="photos" title="Фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="1.7"/><path d="M4 18l5.2-5 3.6 3.4 3-2.8L20 17"/></svg><span>Фото</span></button>
       <button data-tab="shapes" title="Фігури"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9-4.3-4.1 5.9-.8z"/></svg><span>Фігури</span></button>
+      <button data-tab="clip" title="Кліпарти"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.4A4 4 0 0 1 19 10c0 5.600-7 10-7 10z"/></svg><span>Кліпарти</span></button>
       <button data-tab="text" title="Текст"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6V4.5h14V6M12 4.5v15M9 19.5h6"/></svg><span>Текст</span></button>
       <button data-tab="layout" title="Макет"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="9" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="5" rx="1.5"/><rect x="3.5" y="15.5" width="7" height="5" rx="1.5"/><rect x="13.5" y="11.5" width="7" height="9" rx="1.5"/></svg><span>Макет</span></button>
       <button data-tab="bg" title="Фон"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M7 17.5L17.5 7M5 13l6-6M13 19l6-6"/></svg><span>Фон</span></button>
       <button data-tab="themes" title="Теми"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4-1 10-10-3-3L5 16z"/><path d="M13.5 7.5l3 3"/></svg><span>Теми</span></button>
+      <button data-tab="order" title="Тираж"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2"/><path d="M5 15V7a2 2 0 0 1 2-2h8"/></svg><span>Тираж</span></button>
       <button data-tab="obj" title="Об’єкт"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2.5" stroke-dasharray="3 2.4"/><circle cx="4" cy="4" r="1.3" fill="currentColor"/><circle cx="20" cy="4" r="1.3" fill="currentColor"/><circle cx="4" cy="20" r="1.3" fill="currentColor"/><circle cx="20" cy="20" r="1.3" fill="currentColor"/></svg><span>Об’єкт</span></button>
       <i class="tspacer"></i>
       <button data-act="setup" title="Формат книги"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM12 5.5c2.5-1.5 5.5-1.5 8 0v14c-2.5-1.5-5.5-1.5-8 0"/></svg><span>Формат</span></button>
@@ -335,6 +339,8 @@ h3:first-child{margin-top:0}
 <div class="modal" id="modal" hidden><div class="sheet" id="sheet"></div></div>
 <div id="toast" hidden></div>
 <input type="file" id="fileImg" accept="image/*,.psd,.tif,.tiff,.heic,.heif,.svg,.avif,.bmp,.gif,image/vnd.adobe.photoshop" multiple hidden>
+<input type="file" id="fileFont" accept=".ttf,.otf,.woff,.woff2,font/*" multiple hidden>
+<input type="file" id="fileTpl" accept="image/*,.psd,.tif,.tiff,image/vnd.adobe.photoshop" hidden>
 <input type="file" id="fileBg" accept="image/*" hidden>
 <input type="file" id="fileSt" accept="image/svg+xml,image/png,image/webp,.svg,.png,.webp" multiple hidden>
 <input type="file" id="fileProj" accept=".zip,application/zip" hidden>
@@ -463,7 +469,19 @@ const FONTMETA=[
 ];
 const FONTS=Object.fromEntries(FONTMETA.map(f=>[f[0],f[2]]));
 const FONT_GROUPS=['Антиква','Гротеск','Акцидентні','Рукописні'];
-(function loadFonts(){for(const[n,,,q]of FONTMETA){const l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family='+n.replace(/ /g,'+')+(q?':'+q:'')+'&display=swap';document.head.appendChild(l)}})();
+const CORE_N=FONTMETA.length;
+const EXTRA_FONTS={"Антиква": ["Noto Serif", "Source Serif 4", "PT Serif Caption", "Roboto Slab", "Bitter", "Crimson Pro", "Cormorant", "Cormorant Infant", "Cormorant SC", "Cormorant Upright", "Cormorant Unicase", "Old Standard TT", "Literata", "Noto Serif Display", "Gentium Book Plus", "Gentium Plus", "Ledger", "Prata", "Tinos", "Vollkorn", "Vollkorn SC", "Volkhov", "Playfair", "Podkova", "Alegreya", "Alegreya SC", "Andada Pro", "Bona Nova", "Caudex", "Charis SIL", "IBM Plex Serif", "Judson", "Junge", "Newsreader", "Noticia Text", "Piazzolla", "Rasa", "STIX Two Text", "Unna", "Brygada 1918", "Besley", "Spectral SC", "Oranienbaum", "Amiri", "Cambo", "Domine", "Lustria", "Marcellus", "Neuton", "Rufina", "Slabo 27px", "Sorts Mill Goudy", "Trirong", "Zilla Slab", "Fraunces", "Source Serif Pro", "Libre Baskerville", "Libre Caslon Text", "Frank Ruhl Libre", "Kurale", "Adamina", "Almendra", "Aleo", "Arapey", "Artifika", "Belgrano", "Buenard", "Cantata One", "Castoro", "Chonburi", "Coustard", "Cutive", "Della Respira", "Enriqueta", "Esteban", "Fanwood Text", "Fenix", "Gelasio", "Gilda Display", "Goudy Bookletter 1911", "Habibi", "Headland One", "Inika", "Jacques Francois", "Kameron", "Karma", "Laila", "Lancelot", "Libre Bodoni", "Linden Hill", "Lusitana", "Mate", "Mate SC", "Merriweather Sans", "Montaga", "Noto Serif Georgian", "Ovo", "Poly", "Quando", "Quattrocento", "Radley", "Rosarivo", "Sahitya", "Sanchez", "Stoke", "Trocchi", "Trykker", "Vidaloka", "Wellfleet", "Yrsa"], "Гротеск": ["Noto Sans", "Source Sans 3", "PT Sans", "PT Sans Caption", "PT Sans Narrow", "Ubuntu", "Ubuntu Condensed", "Fira Sans Condensed", "Fira Sans Extra Condensed", "Exo 2", "Exo", "Play", "Roboto Condensed", "Roboto Flex", "Montserrat Alternates", "Mulish", "Nunito Sans", "Cabin", "Cabin Condensed", "Commissioner", "Golos Text", "Geologica", "Wix Madefor Display", "Wix Madefor Text", "Inter Tight", "Instrument Sans", "Figtree", "Reddit Sans", "Reddit Sans Condensed", "Hanken Grotesk", "Sofia Sans", "Sofia Sans Condensed", "Sofia Sans Extra Condensed", "Sofia Sans Semi Condensed", "Arsenal", "Arimo", "Istok Web", "Jura", "Marmelad", "Noto Sans Display", "Prosto One", "Ruda", "Scada", "Yanone Kaffeesatz", "Didact Gothic", "Comfortaa Light", "Cuprum", "Days One", "Forum", "Maven Pro", "Rambla", "Ysabeau", "Ysabeau Office", "Ysabeau Infant", "Ysabeau SC", "Bellota", "Bellota Text", "Tektur", "El Messiri", "Amaranth", "Andika", "Fjalla One", "Gruppo", "Overlock", "Alumni Sans", "Anek Cyrillic", "Afacad", "Alegreya Sans", "Alegreya Sans SC", "Advent Pro", "Akshar", "Aref Ruqaa", "Archivo", "Archivo Narrow", "Asap", "Asap Condensed", "Atkinson Hyperlegible", "Baloo Tammudu 2", "Be Vietnam Pro", "Cairo", "Changa", "Chivo", "Chivo Mono", "Encode Sans", "Encode Sans Condensed", "Encode Sans Expanded", "Encode Sans Semi Condensed", "Encode Sans Semi Expanded", "Epilogue", "Gothic A1", "Grandstander", "Heebo", "IBM Plex Sans", "IBM Plex Sans Condensed", "Inria Sans", "Josefin Sans", "Kanit", "Karla", "Kumbh Sans", "Lexend", "Lexend Deca", "Libre Franklin", "M PLUS 1p", "Mada", "Martel Sans", "Mukta", "Murecho", "Noto Sans Mono", "Oxygen", "Palanquin", "Pathway Extreme", "Public Sans", "Questrial", "Quicksand", "Red Hat Display", "Red Hat Text", "Rosario", "Sarabun", "Signika", "Smooch Sans", "Spartan", "Syne", "Titillium Web", "Varela Round", "Yantramanav", "Zen Kaku Gothic New", "Alata", "Antic", "Armata", "Average Sans", "Basic", "Belleza", "Carme", "Convergence", "Duru Sans", "Federo", "Gafata", "Imprima", "Inder", "Molengo", "Nobile", "Open Sans Condensed", "Orienta", "Puritan", "Shanti", "Strait", "Tauri", "Telex", "Viga", "Voltaire", "Wendy One"], "Акцидентні": ["Lobster Two", "Poiret One", "Underdog", "Ruslan Display", "Stalinist One", "Press Start 2P", "Rampart One", "Rubik Mono One", "Rubik Glitch", "Rubik Dirt", "Rubik Distressed", "Rubik Bubbles", "Rubik Beastly", "Rubik Burned", "Rubik Maze", "Rubik Microbe", "Rubik Moonrocks", "Rubik Puddles", "Rubik Spray Paint", "Rubik Wet Paint", "Rubik Vinyl", "Rubik Pixels", "Rubik Iso", "Rubik Marker Hatch", "Rubik Scribble", "Rubik Maps", "Rubik Gemstones", "Rubik Storm", "Rubik 80s Fade", "Rubik Doodle Shadow", "Rubik Doodle Triangles", "Rubik Lines", "Rubik Broken Fax", "Rubik Glitch Pop", "Montserrat Subrayada", "Raleway Dots", "Dela Gothic One", "Kelly Slab", "Seymour One", "Pattaya", "Cormorant Garamond Light", "Bebas Neue", "Anton", "Alfa Slab One", "Abril Fatface", "Black Ops One", "Bungee", "Bungee Inline", "Bungee Shade", "Caveat Brush", "Kaushan Script", "Courgette", "Merienda", "Merienda One", "Mynerve", "Playpen Sans", "Shantell Sans", "Great Vibes", "Dancing Script", "Amatic SC Bold", "Arbutus Slab", "Bahiana", "Baloo Bhaijaan 2", "Bangers", "Bowlby One", "Bowlby One SC", "Cinzel", "Cinzel Decorative", "Fascinate", "Federant", "Fredoka", "Gloria Hallelujah", "Gravitas One", "Jolly Lodger", "Kavoon", "Limelight", "Lily Script One", "Monoton", "Nosifer", "Orbitron", "Passion One", "Permanent Marker", "Rammetto One", "Ranchers", "Righteous", "Sigmar One", "Special Elite", "Spicy Rice", "Titan One", "Vast Shadow", "Wallpoet", "Yatra One", "Zeyada", "Marko One", "Ribeye", "Ribeye Marrow", "Revalia", "Plaster", "Fontdiner Swanky", "Chango", "Codystar", "Combo", "Concert One", "Fruktur", "Galindo", "Gochi Hand", "Grenze Gotisch", "Griffy", "Henny Penny", "Holtwood One SC", "Iceberg", "Jim Nightshade", "Kenia", "Keania One", "Knewave", "Kranky", "Lemon", "Londrina Solid", "Londrina Outline", "Londrina Shadow", "Metal Mania", "Mystery Quest", "New Rocker", "Nova Round", "Original Surfer", "Oleo Script", "Piedra", "Pirata One", "Poller One", "Quintessential", "Rock Salt", "Sancreek", "Shojumaru", "Slackey", "Smokum", "Sofadi One", "Sonsie One", "Stint Ultra Expanded", "Supermercado One", "Trade Winds", "Unkempt", "Unlock", "Uncial Antiqua", "Vampiro One"], "Рукописні": ["Yesteryear", "Sacramento", "Satisfy", "Cookie", "Parisienne", "Alex Brush", "Allura", "Tangerine", "Handlee", "Patrick Hand", "Patrick Hand SC", "Nanum Pen Script", "Gaegu", "Hi Melody", "Single Day", "Sue Ellen Francisco", "Reenie Beanie", "Covered By Your Grace", "Just Another Hand", "Shadows Into Light", "Shadows Into Light Two", "Indie Flower", "Architects Daughter", "Coming Soon", "Schoolbell", "Short Stack", "Walter Turncoat", "Waiting for the Sunrise", "La Belle Aurore", "Over the Rainbow", "Homemade Apple", "Kristi", "Mrs Saint Delafield", "Meddon", "Nothing You Could Do", "Cedarville Cursive", "Dawning of a New Day", "Loved by the King", "Annie Use Your Telescope", "Crafty Girls", "Dekko", "Give You Glory", "Itim", "Mali", "Sriracha", "Charm", "Charmonman", "Kalam", "Pridi", "Delius", "Delius Swash Caps", "Delius Unicase", "Fondamento", "Montez", "Niconne", "Norican", "Oregano", "Playball", "Rancho", "Rochester", "Ruthie", "Sofia", "Stalemate", "Vibur", "Yellowtail", "Bilbo", "Bilbo Swash Caps", "Euphoria Script", "Felipa", "Italianno", "Kaushan", "Leckerli One", "League Script", "Lovers Quarrel", "Marck", "Molle", "Mr Dafoe", "Mr De Haviland", "Qwigley", "Redressed", "Rouge Script", "Ruge Boogie", "Sevillana", "Splash", "Swanky and Moo Moo", "Waterfall", "Yeseva", "Grand Hotel", "Fuggles", "Imperial Script", "Licorice", "Oooh Baby", "Square Peg", "Updock", "Whisper", "Beau Rivage", "Birthstone", "Carattere", "Estonia", "Gwendolyn", "Hurricane", "Inspiration", "Island Moments", "Kolker Brush", "Luxurious Script", "Passions Conflict", "Ephesis", "Explora", "Moon Dance", "Ole", "Send Flowers", "Sassy Frass", "Tapestry", "WindSong", "Comforter", "Comforter Brush", "Water Brush", "Mea Culpa", "Love Light", "Fleur De Leah", "Babylonica", "Bonheur Royale", "Cherish", "Dr Sugiyama", "Ballet", "Grechen Fuemen", "Nanum Brush Script", "Vujahday Script"], "Моноширинні": ["Roboto Mono", "Source Code Pro", "Ubuntu Mono", "Fira Mono", "Fira Code", "IBM Plex Mono", "PT Mono", "Cousine", "Anonymous Pro", "JetBrains Mono", "Inconsolata", "Space Mono", "Overpass Mono", "Courier Prime", "Oxygen Mono", "Share Tech Mono", "Nova Mono", "Major Mono Display", "Cutive Mono", "Red Hat Mono", "DM Mono", "Azeret Mono", "B612 Mono", "Martian Mono", "Syne Mono", "VT323", "Xanh Mono", "Sometype Mono", "Reddit Mono", "Geist Mono"]};
+const FB={'Антиква':'serif','Гротеск':'sans-serif','Акцидентні':'sans-serif','Рукописні':'cursive','Моноширинні':'monospace'};
+for(const g in EXTRA_FONTS)for(const n of EXTRA_FONTS[g])FONTMETA.push([n,g,FB[g],'']);
+for(const f of FONTMETA)FONTS[f[0]]=f[2];
+FONT_GROUPS.push('Моноширинні');
+const CSSLOADED=new Set(FONTMETA.slice(0,CORE_N).map(f=>f[0]));
+function fontCss(n){
+  if(CSSLOADED.has(n))return;CSSLOADED.add(n);
+  const m=FONTMETA.find(f=>f[0]===n);if(!m||m[1]==='Мої шрифти'||m[1]==='З комп’ютера')return;
+  const l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family='+n.replace(/ /g,'+')+'&display=swap';document.head.appendChild(l);
+}
+(function loadFonts(){for(const[n,,,q]of FONTMETA.slice(0,CORE_N)){const l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family='+n.replace(/ /g,'+')+(q?':'+q:'')+'&display=swap';document.head.appendChild(l)}})();
 const SIZES=[['15 × 15 см',150,150],['20 × 20 см',200,200],['21 × 21 см',210,210],['23 × 23 см',230,230],['25 × 25 см',250,250],['30 × 30 см',300,300],['A5 книжкова, 14,8 × 21 см',148,210],['A4 книжкова, 21 × 29,7 см',210,297],['A4 альбомна, 29,7 × 21 см',297,210],['Альбомна 30 × 20 см',300,200],['Книжкова 20 × 30 см',200,300]];
 const colsRects=(c,r)=>{const o=[];for(let j=0;j<r;j++)for(let i=0;i<c;i++)o.push([i/c,j/r,1/c,1/r]);return o};
 const LAYOUTS=[
@@ -490,6 +508,50 @@ const LAYOUTS=[
  {id:'grid9',n:9,name:'Сітка 3×3',r:colsRects(3,3)},
  {id:'pano2',n:3,name:'Панорама + 2',r:[[0,0,1,.5],[0,.5,.5,.5],[.5,.5,.5,.5]]}
 ];
+
+(function genLayouts(){
+ const add=(id,n,name,r)=>{if(!LAYOUTS.some(l=>l.id===id))LAYOUTS.push({id,n,name,r:r.map(x=>x.map(v=>+v.toFixed(3))),auto:false})};
+ [[1,2],[5,1],[1,4],[1,5],[6,1],[2,3],[2,4],[4,3],[3,4],[4,4],[5,2],[2,5],[6,2],[2,6],[5,3],[3,5],[6,3]].forEach(([c,r])=>add('g'+c+'x'+r,c*r,c===1?r+' смуг'+(r<5?'и':''):r===1?c+' колонок':'Сітка '+c+'×'+r,colsRects(c,r)));
+ const strip=(k,y,h)=>[...Array(k)].map((_,i)=>[i/k,y,1/k,h]);
+ const vstrip=(k,x,w)=>[...Array(k)].map((_,i)=>[x,i/k,w,1/k]);
+ for(const k of[2,3,4,5]){
+  add('ht'+k,k+1,'Велике зверху + '+k,[[0,0,1,.65],...strip(k,.65,.35)]);
+  add('hb'+k,k+1,'Велике знизу + '+k,[[0,.35,1,.65],...strip(k,0,.35)]);
+ }
+ for(const k of[2,3,4]){
+  add('hl'+k,k+1,'Велике ліворуч + '+k,[[0,0,.6,1],...vstrip(k,.6,.4)]);
+  add('hr'+k,k+1,'Велике праворуч + '+k,[[.4,0,.6,1],...vstrip(k,0,.4)]);
+ }
+ for(const a of[.3,.4,.6,.7]){
+  const t=Math.round(a*100);
+  add('vs'+t,2,'Поділ '+t+'/'+(100-t),[[0,0,a,1],[a,0,1-a,1]]);
+  add('hs'+t,2,'Горизонтально '+t+'/'+(100-t),[[0,0,1,a],[0,a,1,1-a]]);
+ }
+ for(const a of[.35,.4,.6,.65]){
+  const t=Math.round(a*100);
+  add('rs'+t,3,'Ліве + праве ділене '+t,[[0,0,a,1],[a,0,1-a,.5],[a,.5,1-a,.5]]);
+  add('ls'+t,3,'Ліве ділене + праве '+t,[[0,0,a,.5],[0,.5,a,.5],[a,0,1-a,1]]);
+ }
+ add('ts40',3,'Верх ділений 40',[[0,0,.5,.4],[.5,0,.5,.4],[0,.4,1,.6]]);
+ add('ts60',3,'Верх ділений 60',[[0,0,.5,.6],[.5,0,.5,.6],[0,.6,1,.4]]);
+ add('bs40',3,'Низ ділений 40',[[0,0,1,.6],[0,.6,.5,.4],[.5,.6,.5,.4]]);
+ add('bs60',3,'Низ ділений 60',[[0,0,1,.4],[0,.4,.5,.6],[.5,.4,.5,.6]]);
+ [[.08,.1],[.12,.14],[.2,.12],[.25,.18],[.33,.12],[.36,.2]].forEach(([x,y],i)=>add('in'+i,1,'Фото з відступом '+(i+1),[[x,y,1-2*x,1-2*y]]));
+ add('pair-in',2,'Два з відступом',[[.08,.12,.4,.76],[.52,.12,.4,.76]]);
+ add('tri-in',3,'Три з відступом',[[.06,.2,.28,.6],[.36,.2,.28,.6],[.66,.2,.28,.6]]);
+ add('quad-in',4,'Чотири з відступом',[[.05,.25,.21,.5],[.29,.25,.21,.5],[.53,.25,.21,.5],[.77,.25,.18,.5]]);
+ add('duo-c',2,'Два по центру',[[.18,.1,.31,.8],[.51,.1,.31,.8]]);
+ function mos(seed,n){
+  let s=seed;const rnd=()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+  let rs=[[0,0,1,1]];
+  while(rs.length<n){let bi=0;rs.forEach((r,i)=>{if(r[2]*r[3]>rs[bi][2]*rs[bi][3])bi=i});
+   const[x,y,w,h]=rs.splice(bi,1)[0],a=.36+rnd()*.28;
+   if(w>=h)rs.push([x,y,w*a,h],[x+w*a,y,w*(1-a),h]);else rs.push([x,y,w,h*a],[x,y+h*a,w,h*(1-a)]);}
+  return rs.sort((p,q)=>(p[1]-q[1])||(p[0]-q[0]));
+ }
+ let seed=7,k=0;
+ while(LAYOUTS.length<100){const n=3+(k%5);add('mz'+(k+1),n,'Мозаїка '+(k+1)+' · '+n+' фото',mos(seed+=13,n));k++}
+})();
 const AUTO_PATTERN=[3,2,4,1,5,2,6];
 const TP=(k,label,t,font,fs,o)=>Object.assign({k,label,t,font,fs,it:false,b:false,al:'center',col:'#2b2f36',lh:1.2,ls:0,wf:.6},o||{});
 const TEXT_PRESETS=[
@@ -510,6 +572,95 @@ const TEXT_PRESETS=[
  TP('mono','Монограма','М&Д','Playfair Display',72,{b:true,col:'#b49a6b',lh:1,wf:.4}),
  TP('hl','Виділення','найтепліший вечір','Lora',16,{it:true,bg:'#f3e1b5',pad:1.6,wf:.5})
 ];
+
+(function genText(){
+ const A=(t,font,fs,o,label)=>{TEXT_PRESETS.push(TP('x'+TEXT_PRESETS.length,label||t,t,font,fs,o))};
+ const G='#b49a6b';
+ A('Наша весна','Playfair Display',48,{it:true,lh:1.1},'Заголовок · Playfair');
+ A('Ми разом','Cormorant Garamond',52,{b:true,lh:1.05},'Заголовок · Cormorant');
+ A('Спогади','EB Garamond',46,{it:true,lh:1.1});
+ A('Літні дні','Yeseva One',42,{lh:1.1});
+ A('Альбом сім’ї','Lora',40,{b:true,lh:1.1});
+ A('Історія кохання','Spectral',40,{it:true,lh:1.1});
+ A('ВЕСІЛЛЯ','Playfair Display SC',40,{ls:.2,tf:'upper',lh:1.1},'Весілля');
+ A('Подорожі','Merriweather',38,{b:true,lh:1.1});
+ A('Золоті миті','Cormorant Garamond',50,{it:true,col:G,lh:1.1});
+ A('Наш дім','Alice',44,{lh:1.1});
+ A('ПОДОРОЖ','Montserrat',40,{b:true,tf:'upper',ls:.3,lh:1.1},'Гротеск жирний');
+ A('Привіт, літо','Inter',36,{b:true,lh:1.1});
+ A('нові горизонти','Raleway',30,{ls:.15,lh:1.2});
+ A('Місто вогнів','Onest',34,{b:true,lh:1.1});
+ A('РАНОК','Jost',44,{ls:.5,tf:'upper',lh:1.1},'Розріджений');
+ A('Тихий вечір','Manrope',32,{lh:1.15});
+ A('Фото-щоденник','Nunito',30,{b:true,lh:1.15});
+ A('ГОРИ','Tenor Sans',48,{ls:.4,lh:1.1});
+ A('Мандрівка','Fira Sans',34,{b:true,it:true,lh:1.1});
+ A('Рік у фото','Roboto',30,{lh:1.15});
+ A('ЛІТО','Unbounded',40,{b:true,col:'#e0713f',lh:1.1});
+ A('Пригода','Lobster',40,{col:'#2a6f97',lh:1.1});
+ A('РОЗДІЛ 2','Oswald',30,{b:true,ls:.12,lh:1.1});
+ A('Свято','Comfortaa',36,{b:true,lh:1.1});
+ A('ФІНАЛ','Russo One',40,{lh:1.1});
+ A('Мудрість','Philosopher',34,{it:true,lh:1.15});
+ A('Яскравий день','Rubik',34,{b:true,lh:1.1});
+ A('АЛЬБОМ','Playfair Display SC',36,{ls:.15,lh:1.1});
+ A('з любов’ю','Caveat',34,{b:true,lh:1.1},'Рукописний');
+ A('Мої мрії','Bad Script',34,{lh:1.2});
+ A('Маленькі радості','Neucha',30,{lh:1.2});
+ A('Щасливі','Pangolin',34,{lh:1.2});
+ A('Доброго ранку','Marck Script',36,{col:'#7a3b3b',lh:1.15});
+ A('Літо!','Pacifico',44,{col:'#e0713f',lh:1.1});
+ A('Пригоди','Amatic SC',60,{b:true,lh:1,wf:.5});
+ A('Ми вдома','Caveat',40,{lh:1.1});
+ A('Фото на згадку про чудовий день','Lora',9,{it:true,col:'#5b6068',lh:1.35,wf:.4},'Підпис · серіф');
+ A('Кожен день приносить нові враження, і ми зберігаємо їх на цих сторінках.','Montserrat',10,{al:'left',lh:1.55,wf:.4},'Абзац · гротеск');
+ A('Вдалині синіли гори, і здавалося, що час зупинився саме для нас.','EB Garamond',12,{al:'left',lh:1.5,wf:.4},'Абзац · антиква');
+ A('Це були найпростіші, але найтепліші хвилини нашої подорожі.','Nunito',11,{al:'left',lh:1.5,wf:.4},'Абзац · м’який');
+ A('Вступне слово','Cormorant Garamond',18,{it:true,al:'left',lh:1.3,wf:.5});
+ A('ДАТА · МІСЦЕ','Montserrat',9,{ls:.3,tf:'upper',lh:1.3,wf:.4});
+ A('12 · 10 · 2026','Oswald',18,{ls:.2,lh:1.2,wf:.4},'Дата · Oswald');
+ A('Київ, 2026','Jost',11,{ls:.4,lh:1.3,wf:.4});
+ A('Фото: Автор','PT Serif',8,{it:true,col:'#5b6068',lh:1.3,wf:.3});
+ A('Сторінка 01','Inter',9,{ls:.2,lh:1.3,wf:.3},'Номер сторінки');
+ A('НОВЕ','Oswald',14,{b:true,ls:.15,col:'#ffffff',bg:'#c8554d',pad:2.5,wf:.2},'Бейдж червоний');
+ A('ТОП','Oswald',14,{b:true,ls:.15,col:'#2b2f36',bg:'#f2c94c',pad:2.5,wf:.2},'Бейдж жовтий');
+ A('ЕКО','Montserrat',11,{b:true,ls:.2,col:'#ffffff',bg:'#588157',pad:3,wf:.25},'Бейдж зелений');
+ A('ПЕРЕМОГА','Montserrat',13,{b:true,ls:.2,col:'#f2c94c',bg:'#1f2023',pad:3.5,wf:.35},'Бейдж чорний');
+ A('LOVE','Montserrat',46,{b:true,col:'#ffffff',ol:.5,olc:'#c8554d',lh:1.05,wf:.5},'Контур червоний');
+ A('SUMMER','Oswald',44,{b:true,col:'#ffffff',ol:.5,olc:'#e0713f',lh:1.05,wf:.6},'Контур помаранчевий');
+ A('Weekend','Pacifico',34,{col:'#2a6f97',sh:true,lh:1.1,wf:.55},'Тінь синя');
+ A('Party','Lobster',40,{col:'#d6457a',sh:true,lh:1.1,wf:.5},'Тінь рожева');
+ A('найкращий день','Lora',16,{it:true,bg:'#f8d6e0',pad:1.6,wf:.5},'Виділення рожеве');
+ A('море і сонце','Lora',16,{it:true,bg:'#cfe6f3',pad:1.6,wf:.5},'Виділення блакитне');
+ A('лісова тиша','Lora',16,{it:true,bg:'#d6e8cf',pad:1.6,wf:.5},'Виділення зелене');
+ A('підкреслений напис','Raleway',18,{ul:true,lh:1.2,wf:.5});
+ A('А&В','Cormorant Garamond',70,{b:true,col:G,lh:1,wf:.4},'Монограма · А&В');
+ A('Л·О','Playfair Display',66,{col:'#7a3b3b',lh:1,wf:.4},'Монограма · Л·О');
+ A('Особливий момент','Cormorant Garamond',22,{it:true,col:'#2b2f36',bg:'#ffffff',pad:4,lh:1.2,wf:.5},'На білому');
+ A('ЗАМІТКА: не забути взяти камеру','Caveat',20,{b:true,bg:'#fff3a8',pad:3,al:'left',lh:1.2,wf:.35},'Стікер жовтий');
+ A('Нотатка на згадку','Neucha',18,{bg:'#ffe0e6',pad:3,al:'left',lh:1.25,wf:.35},'Стікер рожевий');
+ A('«Щастя — це просто бути поруч»','Cormorant Garamond',24,{it:true,lh:1.25,wf:.55},'Цитата · Cormorant');
+ A('«Життя — це подорож»','Lora',20,{it:true,lh:1.25,wf:.5},'Цитата · Lora');
+ A('«Не мрій — роби»','Playfair Display',22,{b:true,lh:1.2,wf:.5},'Цитата · Playfair');
+ A('ЖИВИ МОМЕНТОМ','Montserrat',16,{b:true,tf:'upper',ls:.2,col:'#c8554d',lh:1.3,wf:.5},'Девіз');
+ A('Дякую','Marck Script',48,{col:'#7a3b3b',lh:1.1,wf:.4});
+ A('Кінець','Cormorant Garamond',40,{it:true,lh:1.1,wf:.4});
+ A('Початок','Amatic SC',52,{b:true,lh:1,wf:.4});
+ A('Море','Playfair Display',48,{col:'#2a6f97',lh:1.1,wf:.4},'Колір · море');
+ A('Ліс','Lora',46,{col:'#588157',lh:1.1,wf:.4},'Колір · ліс');
+ A('ОСІНЬ','Oswald',44,{b:true,col:'#bc4749',ls:.1,lh:1.1,wf:.5},'Колір · осінь');
+ A('Магія','Comfortaa',44,{b:true,col:'#7b2cbf',lh:1.1,wf:.5},'Колір · магія');
+ A('Сонце','Pacifico',44,{col:'#f4a261',lh:1.1,wf:.5},'Колір · сонце');
+ A('Нічне місто','Montserrat',22,{b:true,col:'#ffffff',bg:'#1f2023',pad:4,lh:1.2,wf:.5},'Білий на темному');
+ A('ЗОЛОТО','Cormorant Garamond',34,{b:true,ls:.25,col:'#d4af37',bg:'#111111',pad:4,lh:1.2,wf:.5},'Золото на чорному');
+ A('Вітаю!','Lobster',44,{col:'#c8554d',lh:1.1,wf:.45});
+ A('Привіт','Caveat',54,{b:true,lh:1.05,wf:.4});
+ A('Ура!','Russo One',46,{col:'#ffffff',ol:.6,olc:'#2b2f36',lh:1.05,wf:.4},'Контур чорний');
+ A('Тут і зараз','Jost',26,{it:true,ls:.1,lh:1.2,wf:.5});
+ A('Home sweet home','Pacifico',30,{lh:1.15,wf:.6});
+ A('Sweet moments','Caveat',38,{b:true,lh:1.1,wf:.55});
+ A('Best day ever','Amatic SC',50,{b:true,ls:.05,lh:1,wf:.55});
+})();
 const KAP=.5523,fm=n=>+n.toFixed(2);
 const circD=(cx,cy,r,rev)=>{const k=r*KAP,P_=(a,b)=>fm(a)+' '+fm(b);return rev?
  `M${P_(cx+r,cy)}C${P_(cx+r,cy-k)} ${P_(cx+k,cy-r)} ${P_(cx,cy-r)}C${P_(cx-k,cy-r)} ${P_(cx-r,cy-k)} ${P_(cx-r,cy)}C${P_(cx-r,cy+k)} ${P_(cx-k,cy+r)} ${P_(cx,cy+r)}C${P_(cx+k,cy+r)} ${P_(cx+r,cy+k)} ${P_(cx+r,cy)}Z`:
@@ -568,7 +719,7 @@ const FILTERS={none:['Без фільтра',''],bw:['Чорно-біле','gray
 
 let P;                       // project
 const IMGS=new Map();        // id -> {id,name,blob,w,h,prev,thumb}
-const state={cur:0,sel:null,zoom:1,guides:true,showBleed:false,pickPhoto:true,crop:false,tab:'photos',prevTab:'photos',lm:8,lg:4,applyAll:false,bgScope:'one',bgPick:[],linked:true,uploadTarget:null,snap:{x:null,y:null},dropHover:null};
+const state={cur:0,sel:null,zoom:1,guides:true,showBleed:false,pickPhoto:true,crop:false,tab:'photos',prevTab:'photos',lm:8,lg:4,layMode:'spread',applyAll:false,bgScope:'one',bgPick:[],linked:true,uploadTarget:null,snap:{x:null,y:null},dropHover:null};
 let view={k:1,pad:10,W:0,H:0,cssW:0,cssH:0,u:1};
 let fontsRev=0,COL={},hasIDB=false,dl=null,ready=false;
 
@@ -625,10 +776,11 @@ function coverLayouts(){
   add('c-wrap-two','Рамки на задню й передню',[[m,m,pw-2*m,H*.62],[fx+m,m,pw-2*m,H*.62]],true);
   return L;
 }
-function layoutRects(L,s){
+function layoutRects(L,s,side){
   const W=spreadW(s),H=P.ph,b=P.bleed,m=state.lm,g=state.lg,e=1e-6;
   let ax0=m,ay0=m,ax1=W-m,ay1=H-m;
   if(m<=0){ax0=-b;ay0=-b;ax1=W+b;ay1=H+b}
+  if(side==='left')ax1=m<=0?W/2:W/2-m;else if(side==='right')ax0=m<=0?W/2:W/2+m;
   const aw=ax1-ax0,ah=ay1-ay0,gg=g/2;
   return L.r.map(([x,y,w,h])=>{
     let a=ax0+x*aw,c=ay0+y*ah,d=ax0+(x+w)*aw,f=ay0+(y+h)*ah;
@@ -714,9 +866,72 @@ function layoutText(it){
 }
 function fitText(it){const L=layoutText(it);it.h=Math.max(L.fs*it.lh,L.height)}
 function refitAll(){for(const s of P.spreads)for(const it of s.items)if(it.type==='text')fitText(it)}
+const CYR=(()=>{try{return JSON.parse(localStorage.getItem('mk-cyr')||'{}')}catch(e){return{}}})();
+const saveCyr=()=>{try{localStorage.setItem('mk-cyr',JSON.stringify(CYR))}catch(e){}};
+const isGF=f=>f[1]!=='Мої шрифти'&&f[1]!=='З комп’ютера';
+const fontShown=f=>CYR[f[0]]!==0;
+let cyrBusy=false;
+async function cyrCheckAll(){
+  if(cyrBusy)return;cyrBusy=true;
+  const todo=FONTMETA.filter((f,i)=>i>=CORE_N&&isGF(f)&&!(f[0] in CYR)).map(f=>f[0]);
+  let fail=0,i=0;
+  const worker=async()=>{while(i<todo.length&&fail<3){const n=todo[i++];
+    try{const r=await fetch('https://fonts.googleapis.com/css2?family='+n.replace(/ /g,'+')+'&display=swap');
+      if(r.status===400||r.status===404){CYR[n]=0}
+      else if(r.ok){const t=await r.text();CYR[n]=/\/\*\s*cyrillic\s*\*\//.test(t)?1:0}
+      else fail++;
+      if(n in CYR&&CYR[n]===0){const el=panelEl.querySelector('.fi[data-font="'+n+'"]');if(el)el.remove()}
+    }catch(e){fail++}}};
+  await Promise.all([...Array(6)].map(worker));saveCyr();cyrBusy=false;
+  const c=panelEl.querySelector('#fcount');if(c)c.textContent=FONTMETA.filter(fontShown).length;
+}
+function fontListHTML(cur){
+  const q=(state.fontQ||'').toLowerCase().trim();
+  return FONT_GROUPS.map(g=>{const L=FONTMETA.filter(f=>f[1]===g&&fontShown(f)&&(!q||f[0].toLowerCase().includes(q)));
+    return L.length?`<div class="fg">${g} · ${L.length}</div>`+L.map(f=>`<button class="fi ${f[0]===cur?'on':''}" data-font="${esc(f[0])}" style="font-family:'${esc(f[0])}',${f[2]}">${esc(f[0])}<small>Аа Бб Ґґ 123</small></button>`).join(''):''}).join('')||'<div class="fg">Нічого не знайдено</div>';
+}
+let fontIO=null;
+function lazyFonts(){
+  const lst=panelEl.querySelector('.fontlist');if(!lst)return;
+  if(!fontIO)fontIO=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){fontCss(e.target.dataset.font);fontIO.unobserve(e.target)}},{root:null,rootMargin:'200px'});
+  lst.querySelectorAll('.fi').forEach(b=>fontIO.observe(b));
+  cyrCheckAll();
+}
+async function addUserFonts(files){
+  let n=0;const saved=(await idbGet('kv','userfonts').catch(()=>null))||[];
+  for(const f of files){
+    try{
+      const name=f.name.replace(/\.(ttf|otf|woff2?|ttc)$/i,'').replace(/[-_]+/g,' ').trim(),buf=await f.arrayBuffer();
+      const ff=new FontFace(name,buf);await ff.load();document.fonts.add(ff);
+      if(!FONTMETA.find(m=>m[0]===name)){FONTMETA.push([name,'Мої шрифти','sans-serif','']);FONTS[name]='sans-serif'}
+      if(!FONT_GROUPS.includes('Мої шрифти'))FONT_GROUPS.unshift('Мої шрифти');
+      CSSLOADED.add(name);if(!saved.find(x=>x.name===name))saved.push({name,buf});n++;
+    }catch(e){console.warn(e)}
+  }
+  if(hasIDB)idbPut('kv','userfonts',saved).catch(()=>{});
+  toast(n?`Додано шрифтів: ${n}`:'Не вдалося прочитати шрифт');state.fontOpen=true;renderPanelKeepScroll();
+}
+async function loadUserFonts(){
+  try{
+    const saved=await idbGet('kv','userfonts');
+    for(const x of saved||[]){try{const ff=new FontFace(x.name,x.buf);await ff.load();document.fonts.add(ff);if(!FONTMETA.find(m=>m[0]===x.name)){FONTMETA.push([x.name,'Мої шрифти','sans-serif','']);FONTS[x.name]='sans-serif'}CSSLOADED.add(x.name);if(!FONT_GROUPS.includes('Мої шрифти'))FONT_GROUPS.unshift('Мої шрифти')}catch(e){}}
+  }catch(e){}
+  try{const L=JSON.parse(localStorage.getItem('mk-localfonts')||'[]');for(const n of L)addLocalFont(n)}catch(e){}
+}
+function addLocalFont(n){if(FONTMETA.find(m=>m[0]===n))return false;FONTMETA.push([n,'З комп’ютера','sans-serif','']);FONTS[n]='sans-serif';CSSLOADED.add(n);if(!FONT_GROUPS.includes('З комп’ютера'))FONT_GROUPS.push('З комп’ютера');return true}
+async function importLocalFonts(){
+  if(!window.queryLocalFonts){toast('Цей браузер не дає доступ до шрифтів комп’ютера. Спробуйте Chrome або Edge.');return}
+  try{
+    const list=await window.queryLocalFonts(),fam=[...new Set(list.map(f=>f.family))];let n=0;
+    for(const f of fam)if(addLocalFont(f))n++;
+    try{localStorage.setItem('mk-localfonts',JSON.stringify(FONTMETA.filter(m=>m[1]==='З комп’ютера').map(m=>m[0])))}catch(e){}
+    toast(`Шрифтів з комп’ютера: ${fam.length}`);state.fontOpen=true;renderPanelKeepScroll();
+  }catch(e){toast('Доступ до шрифтів не надано')}
+}
 function ensureFont(it){
   const sample=(it.t||'Аа').slice(0,40)||'Аа',set=new Map();
   for(const st of styleAt(it).concat([baseStyle(it)]))set.set(st.font+'|'+st.it+'|'+st.b,st);
+  for(const st of set.values())fontCss(st.font);
   return Promise.all([...set.values()].map(st=>document.fonts.load(`${st.it?'italic ':''}${st.b?'700':'400'} 20px "${st.font}"`,sample))).then(()=>{fontsRev++;refitAll();redraw();thumbsAll()}).catch(()=>{});
 }
 function ensureAllFonts(){const seen=new Set();for(const s of P.spreads)for(const it of s.items)if(it.type==='text'){const k=it.font+it.it+it.b;if(!seen.has(k)){seen.add(k);ensureFont(it)}}}
@@ -912,7 +1127,7 @@ function drawShape(ctx,it){
 const itemCenter=it=>[it.x+it.w/2,it.y+it.h/2];
 function toLocal(it,px,py){const[cx,cy]=itemCenter(it),a=-it.rot*Math.PI/180,dx=px-cx,dy=py-cy;return[dx*Math.cos(a)-dy*Math.sin(a),dx*Math.sin(a)+dy*Math.cos(a)]}
 function toWorld(it,lx,ly){const a=it.rot*Math.PI/180,[cx,cy]=itemCenter(it);return[cx+lx*Math.cos(a)-ly*Math.sin(a),cy+lx*Math.sin(a)+ly*Math.cos(a)]}
-function hitItem(it,px,py){const[lx,ly]=toLocal(it,px,py),pad=it.type==='shape'&&it.shape==='line'?1.5:0;return Math.abs(lx)<=it.w/2+pad&&Math.abs(ly)<=it.h/2+pad}
+function hitItem(it,px,py){if(it.pass)return false;const[lx,ly]=toLocal(it,px,py),pad=it.type==='shape'&&it.shape==='line'?1.5:0;return Math.abs(lx)<=it.w/2+pad&&Math.abs(ly)<=it.h/2+pad}
 function aabb(it){const a=it.rot*Math.PI/180,c=Math.abs(Math.cos(a)),s=Math.abs(Math.sin(a)),bw=it.w*c+it.h*s,bh=it.w*s+it.h*c,[cx,cy]=itemCenter(it);return{l:cx-bw/2,r:cx+bw/2,t:cy-bh/2,b:cy+bh/2,cx,cy}}
 const HND=[[-1,-1],[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0]];
 const handlesOf=it=>(it.type==='text'||(it.type==='shape'&&it.shape==='line'))?[[1,0],[-1,0]]:HND;
@@ -1087,7 +1302,7 @@ function renderList(){
     <button class="btn icon" data-act="spleft" title="Перемістити вгору" aria-label="Перемістити вгору">${IC('<path d="M12 19V5M6 11l6-6 6 6"/>')}</button>
     <button class="btn icon" data-act="spright" title="Перемістити вниз" aria-label="Перемістити вниз">${IC('<path d="M12 5v14M6 13l6 6 6-6"/>')}</button>
     <button class="btn icon danger" data-act="delspread" title="Видалити розворот" aria-label="Видалити розворот">${IC('<path d="M4 7h16M10 11v6M14 11v6M6 7l1 12h10l1-12M9 7V4h6v3"/>')}</button></div>`+
-    P.spreads.map((s,i)=>`<div class="sp ${i===state.cur?'on':''}" data-i="${i}"><canvas></canvas><div class="lb">${spreadLabel(i)}</div></div>`).join('')+`<button class="btn primary addsp" data-act="addspread">Додати розворот</button>`;
+    P.spreads.map((s,i)=>`<div class="sp ${i===state.cur?'on':''}" data-i="${i}"><canvas></canvas><div class="lb">${spreadLabel(i)}</div><button class="spm" data-act="spmenu" data-i="${i}" title="Меню розвороту" aria-label="Меню розвороту">⋯</button></div>`).join('')+`<button class="btn primary addsp" data-act="addspread">Додати розворот</button>`;
   thumbsAll();
 }
 function markList(){
@@ -1212,9 +1427,32 @@ const THEMES=[
  {id:'sea',n:'Море',bg:'#dcecf5',ink:'#12425f',font:'Raleway',bw:0,bc:'#ffffff',rad:.06,sh:false},
  {id:'autumn',n:'Осінь',bg:'#efe0c8',ink:'#5a3a1d',font:'Playfair Display',bw:1.5,bc:'#fbf5ea',rad:0,sh:true},
  {id:'bw',n:'Чорно-біла',bg:'#ffffff',ink:'#000000',font:'Oswald',bw:1.2,bc:'#000000',rad:0,sh:false},
+
+ {id:'kraft',n:'Крафт',bg:'#d9c3a0',ink:'#4a3320',font:'Neucha',bw:0,bc:'#ffffff',rad:0,sh:false},
+ {id:'lavender',n:'Лаванда',bg:'#ebe3f5',ink:'#4b3a6b',font:'Comfortaa',bw:2,bc:'#ffffff',rad:.1,sh:false},
+ {id:'mint',n:'М’ята',bg:'#e0f2ea',ink:'#1f5a45',font:'Nunito',bw:0,bc:'#ffffff',rad:.08,sh:false},
+ {id:'peach',n:'Персик',bg:'#fde3d2',ink:'#7a3b2a',font:'Pangolin',bw:2,bc:'#ffffff',rad:.1,sh:false},
+ {id:'spring',n:'Весна',bg:'#eef6dc',ink:'#3d5a1f',font:'Raleway',bw:0,bc:'#ffffff',rad:.05,sh:false},
+ {id:'winter',n:'Зима',bg:'#e8eef5',ink:'#27384d',font:'Jost',bw:2,bc:'#ffffff',rad:0,sh:false},
+ {id:'night',n:'Ніч',bg:'#14182b',ink:'#e8e6f5',font:'Philosopher',bw:0,bc:'#ffffff',rad:0,sh:false},
+ {id:'gold',n:'Золото',bg:'#1a1a1a',ink:'#d4af37',font:'Cormorant Garamond',bw:1.2,bc:'#d4af37',rad:0,sh:false},
+ {id:'bordeaux',n:'Бордо',bg:'#4a1c2a',ink:'#f5e6d8',font:'Playfair Display',bw:0,bc:'#ffffff',rad:0,sh:true},
+ {id:'forest',n:'Лісова',bg:'#2f4636',ink:'#eef0e0',font:'Lora',bw:0,bc:'#ffffff',rad:0,sh:false},
+ {id:'retro',n:'Ретро',bg:'#f2e2b8',ink:'#a2402b',font:'Pacifico',bw:3,bc:'#fff8e5',rad:0,sh:true},
+ {id:'scandi',n:'Скандинавська',bg:'#f5f5f2',ink:'#2f3b45',font:'Onest',bw:0,bc:'#ffffff',rad:.03,sh:false},
+ {id:'wedding',n:'Весілля',bg:'#fbf7f2',ink:'#8a6f5a',font:'Cormorant Garamond',bw:1,bc:'#ffffff',rad:0,sh:false},
+ {id:'kids',n:'Дитяча',bg:'#fff4c9',ink:'#e0603a',font:'Pangolin',bw:2,bc:'#ffffff',rad:.15,sh:false},
+ {id:'tropic',n:'Тропіки',bg:'#d8f0e4',ink:'#0b6b52',font:'Rubik',bw:0,bc:'#ffffff',rad:.05,sh:false},
+ {id:'sunset',n:'Захід',bg:'#fbd9c4',ink:'#8a2f3b',font:'Yeseva One',bw:0,bc:'#ffffff',rad:0,sh:false},
+ {id:'neon',n:'Неон',bg:'#0e0e1a',ink:'#39ff9c',font:'Unbounded',bw:1.2,bc:'#39ff9c',rad:0,sh:false},
+ {id:'coffee',n:'Кава',bg:'#e6d5c3',ink:'#3b2416',font:'Merriweather',bw:0,bc:'#ffffff',rad:0,sh:false},
+ {id:'rose',n:'Рожева',bg:'#fbe4ee',ink:'#a23a65',font:'Bad Script',bw:0,bc:'#ffffff',rad:.1,sh:false},
+ {id:'indigo',n:'Індиго',bg:'#e3e8f7',ink:'#1d2b6b',font:'Manrope',bw:0,bc:'#ffffff',rad:0,sh:false},
+ {id:'graphite',n:'Графіт',bg:'#2b2d31',ink:'#e9e9e9',font:'Inter',bw:0,bc:'#ffffff',rad:0,sh:false},
+ {id:'sepia',n:'Сепія',bg:'#ead9bd',ink:'#5b4630',font:'EB Garamond',bw:1.5,bc:'#f6ecd9',rad:0,sh:true},
 ];
 function panelThemes(){
-  return `<p class="meta" style="margin-top:0">Тема змінює фон, шрифт і вигляд рамок на всіх розворотах. Можна скасувати кнопкою «Скасувати».</p><div class="thgrid">${THEMES.map(t=>`<button class="thc" data-th="${t.id}" title="${t.n}"><div class="thp" style="background:${t.bg}"><i style="background:${t.ink};opacity:.18;${t.bw?`outline:${Math.max(2,t.bw)}px solid ${t.bc};`:''}${t.rad?'border-radius:6px;':''}"></i><b style="color:${t.ink};font-family:'${t.font}',serif">Аа</b></div><span>${t.n}</span></button>`).join('')}</div>`;
+  return `<h3>Теми · ${THEMES.length}</h3><p class="meta">Тема змінює фон, шрифт і вигляд рамок на всіх розворотах. Можна скасувати кнопкою «Скасувати».</p><div class="thgrid">${THEMES.map(t=>`<button class="thc" data-th="${t.id}" title="${t.n}"><div class="thp" style="background:${t.bg}"><i style="background:${t.ink};opacity:.18;${t.bw?`outline:${Math.max(2,t.bw)}px solid ${t.bc};`:''}${t.rad?'border-radius:6px;':''}"></i><b style="color:${t.ink};font-family:'${t.font}',serif">Аа</b></div><span>${t.n}</span></button>`).join('')}</div>`;
 }
 function applyTheme(id){
   const t=THEMES.find(x=>x.id===id);if(!t)return;
@@ -1279,8 +1517,16 @@ function moveSpread(d){
 function applyLayoutById(id){
   const s=cur();let rects;
   if(s.kind==='cover'){const L=coverLayouts().find(l=>l.id===id);if(!L)return;rects=L.rects}
+  else if(state.layMode!=='spread'){
+    const L=LAYOUTS.find(l=>l.id===id);if(!L)return;const side=state.layMode,half=spreadW(s)/2;
+    rects=layoutRects(L,s,side);
+    const onSide=i=>i.type==='photo'&&((i.x+i.w/2<half)===(side==='left'));
+    const old=s.items.filter(onSide),imgs=old.map(i=>i.img).filter(Boolean);
+    s.items=[...s.items.filter(i=>!onSide(i)),...rects.map((r,i)=>mkPhoto(r,imgs[i]||null))];
+    s.pl=Object.assign({},s.pl,{[side]:id});s.lay=null;state.sel=null;state.crop=false;redraw();return;
+  }
   else{const L=LAYOUTS.find(l=>l.id===id);if(!L)return;rects=layoutRects(L,s)}
-  fillLayout(s,rects,id);state.sel=null;state.crop=false;redraw();
+  fillLayout(s,rects,id);s.pl=null;state.sel=null;state.crop=false;redraw();
 }
 function bgTargets(){
   const c=cur();
@@ -1297,8 +1543,8 @@ function renderTabs(){
 }
 function renderPanel(){
   renderTabs();renderFbar();
-  const f={photos:panelPhotos,layout:panelLayout,text:panelText,bg:panelBg,shapes:panelShapes,themes:panelThemes,obj:panelObj}[state.tab]||panelPhotos;
-  const TT={photos:'Фото',layout:'Макет',text:'Текст',bg:'Фони',shapes:'Фігури',themes:'Теми',obj:'Об’єкт'};
+  const f={photos:panelPhotos,layout:panelLayout,text:panelText,bg:panelBg,shapes:()=>panelShapes(false),clip:()=>panelShapes(true),order:panelOrder,themes:panelThemes,obj:panelObj}[state.tab]||panelPhotos;
+  const TT={photos:'Фото',layout:'Макет',text:'Текст',bg:'Фони',shapes:'Фігури',themes:'Теми',clip:'Кліпарти',order:'Тираж і персоналізація',obj:'Об’єкт'};
   const pt=$('#ptt');if(pt)pt.textContent=TT[state.tab]||'';
   panelEl.innerHTML=f();
 }
@@ -1314,9 +1560,12 @@ function panelLayout(){
   if(s.kind==='cover'){
     const W=spreadW(s),H=P.ph;
     thumbs=coverLayouts().map(L=>`<button class="lay ${s.lay===L.id?'on':''}" style="aspect-ratio:${W}/${H}" data-lay="${L.id}" title="${esc(L.name)}" aria-label="${esc(L.name)}">${L.rects.map(r=>{const a=Math.max(0,r[0]),c=Math.max(0,r[1]),d=Math.min(W,r[0]+r[2]),f=Math.min(H,r[1]+r[3]);return boxI(a/W,c/H,(d-a)/W,(f-c)/H)}).join('')}</button>`).join('');
-  }else thumbs=LAYOUTS.map(L=>`<button class="lay ${s.lay===L.id?'on':''}" data-lay="${L.id}" title="${esc(L.name)} · ${L.n} фото" aria-label="${esc(L.name)}">${L.r.map(r=>boxI(r[0]*.9+.05,r[1]*.82+.09,r[2]*.9,r[3]*.82)).join('')}</button>`).join('');
+  }else if(state.layMode!=='spread')thumbs=LAYOUTS.map(L=>`<button class="lay pg ${s.pl&&s.pl[state.layMode]===L.id?'on':''}" style="aspect-ratio:${P.pw}/${P.ph}" data-lay="${L.id}" title="${esc(L.name)} · ${L.n} фото" aria-label="${esc(L.name)}">${L.r.map(r=>boxI(r[0]*.9+.05,r[1]*.9+.05,r[2]*.9,r[3]*.9)).join('')}</button>`).join('');
+  else thumbs=LAYOUTS.map(L=>`<button class="lay ${s.lay===L.id?'on':''}" data-lay="${L.id}" title="${esc(L.name)} · ${L.n} фото" aria-label="${esc(L.name)}">${L.r.map(r=>boxI(r[0]*.9+.05,r[1]*.82+.09,r[2]*.9,r[3]*.82)).join('')}</button>`).join('');
   const sliders=s.kind==='cover'?'':`<h3>Відступи</h3>${fld('Поля, мм',`<input type="range" id="lm" min="0" max="20" step="1" value="${state.lm}"><span class="val" id="lmv">${state.lm}</span>`)}${fld('Проміжок, мм',`<input type="range" id="lg" min="0" max="12" step="1" value="${state.lg}"><span class="val" id="lgv">${state.lg}</span>`)}<p class="meta">Поля 0 — фото йдуть до краю разом із вильотами.</p>`;
-  return `<h3>${s.kind==='cover'?'Макет обкладинки':'Макет розвороту'}</h3><div class="laygrid">${thumbs}</div>${sliders}<p class="meta">Фото, що вже стоять у рамках, зберігаються й переходять у нові рамки по порядку.</p>
+  const lm=state.layMode,modeSeg=s.kind==='cover'?'':`<div class="seg" style="margin-bottom:10px">${[['spread','Розворот'],['left','Ліва сторінка'],['right','Права сторінка']].map(([k,l])=>`<button class="btn sm ${lm===k?'on':''}" data-laymode="${k}">${l}</button>`).join('')}</div>`;
+  const tplBlock=`<h3>Свій макет</h3><div class="btnrow"><button class="btn primary" data-act="tplup">Завантажити свій макет</button>${s.items.some(i=>i.tpl)?'<button class="btn danger" data-act="tpldel">Прибрати</button>':''}</div><p class="meta">PSD, JPG, PNG, WebP, TIFF. Прозорі «вікна» у PNG або PSD автоматично стають рамками для фото, а сам файл лягає поверх. Звичайний JPG стає підкладкою. Застосовується до ${state.layMode==='left'?'лівої сторінки':state.layMode==='right'?'правої сторінки':'всього розвороту'}.</p>`;
+  return `${modeSeg}${tplBlock}<h3>${s.kind==='cover'?'Макет обкладинки':lm==='spread'?'Макет розвороту · '+LAYOUTS.length:(lm==='left'?'Ліва':'Права')+' сторінка · '+LAYOUTS.length}</h3><div class="laygrid">${thumbs}</div>${sliders}<p class="meta">Фото, що вже стоять у рамках, зберігаються й переходять у нові рамки по порядку.</p>
   <h3>Гнучка зміна</h3><label class="chk"><input type="checkbox" id="linkChk" ${state.linked?'checked':''}> Межа між фото рухається разом із сусідніми</label>
   <div class="btnrow"><button class="btn" data-act="addframe">+ Нова рамка для фото</button></div>
   <p class="meta">Тягніть за край рамки, щоб змінити розмір, а «Навпіл» ділить рамку на дві. Alt під час перетягування вимикає прилипання та зв’язок.</p>`;
@@ -1345,14 +1594,33 @@ function panelBg(){
   <p class="meta">${state.bgScope==='one'?'Фон змінюється лише на відкритому розвороті.':state.bgScope==='all'?'Фон застосовується до всіх розворотів, обкладинка не змінюється.':'Позначте розвороти, до яких застосовувати фон.'}</p>
   <button class="btn" data-act="bgapply" style="width:100%" ${state.bgScope==='one'?'disabled':''}>Застосувати поточний фон до вибраних</button>`;
 }
-function panelShapes(){
-  const st=P.images.filter(m=>m.st);
+const BASICSH=['rect','ellipse','line','triangle','rtriangle','diamond','pentagon','hexagon','octagon','trapezoid','parallelogram','plus','ring','semicircle','quarter','frame','chevron'];
+function panelShapes(clip){
+  const st=clip?P.images.filter(m=>m.st):[];
   const icon=d=>`<svg viewBox="-6 -6 112 112" aria-hidden="true"><path d="${d}" fill="currentColor"/></svg>`;
-  return `<h3>Фігури · ${SHAPEDEFS.length}</h3><div class="shgrid">${SHAPEDEFS.map(d=>`<button class="shb" data-shape="${d.k}" title="${d.n}" aria-label="${d.n}">${icon(d.icon||d.d)}</button>`).join('')}</div>
-  <h3>Свої фігури</h3><button class="btn primary" data-act="uploadSt" style="width:100%">Завантажити свою фігуру</button>
-  <p class="meta">SVG або PNG з прозорим тлом (стікери, іконки, рамки, силуети). Додається на розворот, розмір і поворот можна змінювати.</p>
+  const SD=SHAPEDEFS.filter(d=>BASICSH.includes(d.k)!==!!clip);
+  return `<h3>${clip?'Кліпарти':'Фігури'} · ${SD.length}</h3><div class="shgrid">${SD.map(d=>`<button class="shb" data-shape="${d.k}" title="${d.n}" aria-label="${d.n}">${icon(d.icon||d.d)}</button>`).join('')}</div>
+  ${clip?`<h3>Свої кліпарти</h3><button class="btn primary" data-act="uploadSt" style="width:100%">Завантажити свій кліпарт</button>
+  <p class="meta">SVG або PNG з прозорим тлом (стікери, іконки, рамки, силуети). Додається на розворот, розмір і поворот можна змінювати.</p>`:''}
   ${st.length?`<div class="shgrid stk">${st.map(m=>{const r=IMGS.get(m.id);return `<div class="stw"><button class="shb" data-sticker="${m.id}" title="${esc(m.name)}">${r?`<img src="${r.thumb}" alt="">`:''}</button><button class="stx" data-act="rmimg" data-id="${m.id}" aria-label="Видалити" title="Видалити з бібліотеки">×</button></div>`}).join('')}</div>`:''}`;
 }
+function panelOrder(){
+  const o=P.order||(P.order={copies:1,note:'',names:''});
+  const n=(o.names||'').split('\n').filter(x=>x.trim()).length;
+  return `<h3>Тираж</h3>${fld('Кількість примірників',`<input type="number" id="ordN" min="1" max="999" step="1" value="${o.copies||1}">`)}
+  <h3>Персоналізація</h3><p class="meta">Імена (по одному в рядок) — для індивідуальних примірників. Перше ім’я можна одразу додати на обкладинку.</p>
+  <textarea id="ordNames" rows="5" style="width:100%;box-sizing:border-box" placeholder="Олена&#10;Максим">${esc(o.names||'')}</textarea>
+  <div class="btnrow"><button class="btn primary" data-act="ordcover" ${n?'':'disabled'}>Додати ім’я на обкладинку</button></div>
+  <h3>Примітка для друкарні</h3><textarea id="ordNote" rows="4" style="width:100%;box-sizing:border-box" placeholder="Побажання щодо паперу, ламінації тощо">${esc(o.note||'')}</textarea>
+  <p class="meta">Це збережеться у файлі проєкту. Для друку експортуйте макет і передайте друкарні разом із цією приміткою.</p>`;
+}
+panelEl.addEventListener('input',e=>{
+  if(e.target.id==='fsearch'){state.fontQ=e.target.value;const l=panelEl.querySelector('.fontlist');if(l){l.innerHTML=fontListHTML(state.fontCur);lazyFonts()}return}
+  const id=e.target.id;if(!['ordN','ordNames','ordNote'].includes(id))return;
+  const o=P.order||(P.order={copies:1,note:'',names:''});
+  if(id==='ordN')o.copies=Math.max(1,Math.min(999,+e.target.value||1));else if(id==='ordNames')o.names=e.target.value;else o.note=e.target.value;
+});
+panelEl.addEventListener('change',e=>{if(['ordN','ordNames','ordNote'].includes(e.target.id)){commit();if(e.target.id==='ordNames')renderPanelKeepScroll()}});
 const fld=(l,inner)=>`<label class="fld"><span>${l}</span>${inner}</label>`;
 const fNum=(p,v,min,max,step)=>`<input type="number" data-p="${p}" value="${round(v,2)}" min="${min}" max="${max}" step="${step}">`;
 const fRange=(p,v,min,max,step)=>`<input type="range" data-p="${p}" value="${v}" min="${min}" max="${max}" step="${step}">`;
@@ -1421,7 +1689,8 @@ function panelObj(){
   }else if(it.type==='text'){
     const rg=rtRange(it),rv=p=>rtValue(it,p,rg);
     const fontV=rv('font'),sizeV=rv('fs'),colV=rv('col');
-    const fl=state.fontOpen?`<div class="fontlist">${FONT_GROUPS.map(g=>`<div class="fg">${g}</div>`+FONTMETA.filter(f=>f[1]===g).map(f=>`<button class="fi ${f[0]===fontV?'on':''}" data-font="${f[0]}" style="font-family:'${f[0]}',${f[2]}">${f[0]}<small>Аа Бб Ґґ 123</small></button>`).join('')).join('')}</div>`:'';
+    state.fontCur=fontV;
+    const fl=state.fontOpen?`<div class="fbar"><input type="search" id="fsearch" placeholder="Пошук серед шрифтів · ${FONTMETA.filter(fontShown).length}" value="${esc(state.fontQ||'')}"></div><div class="btnrow fbtns"><button class="btn sm" data-act="fontup">＋ Свій шрифт</button><button class="btn sm" data-act="fontlocal">З комп’ютера</button></div><div class="fontlist">${fontListHTML(fontV)}</div>`:'';
     const tb=(attr,v,on,lbl,st,ttl)=>`<button class="btn sm ${on?'on':''}" ${attr}="${v}" title="${ttl}" aria-label="${ttl}" style="${st||''}">${lbl}</button>`;
     const aligns=[['left','⇤','Ліворуч'],['center','↔','По центру'],['right','⇥','Праворуч'],['justify','☰','По ширині']];
     body=`<h3>Текст</h3>
@@ -1504,7 +1773,7 @@ panelEl.addEventListener('input',e=>{
   const t=e.target;
   if(t.id==='lm'||t.id==='lg'){
     state[t.id]=+t.value;$('#'+t.id+'v').textContent=t.value;
-    const s=cur();if(s.lay&&s.kind==='spread'){applyLayoutById(s.lay)}return;
+    const s=cur();if(s.kind==='spread'){if(state.layMode==='spread'){if(s.lay)applyLayoutById(s.lay)}else if(s.pl&&s.pl[state.layMode])applyLayoutById(s.pl[state.layMode])}return;
   }
   if(t.id==='bgc'){setBgLive({t:'color',c1:t.value});return}
   if(t.dataset.bgp){for(const sp of bgTargets())if(sp.bg.t==='image')sp.bg[t.dataset.bgp]=parseFloat(t.value);redraw();thumbsAll();return}
@@ -2027,12 +2296,12 @@ async function psdToPngBlob(img,w,h){
   const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').putImageData(img,0,0);
   const b=await new Promise(r=>c.toBlob(r,'image/png'));c.width=c.height=1;return b;
 }
-async function importPSD(f){
+async function importPSD(f,flat){
   const buf=await f.arrayBuffer(),base=f.name.replace(/\.psd$/i,'');
   let res=psdParse(buf,false);const ids=[];
   const nLayers=(()=>{try{return psdParse(buf,true).layers||[]}catch(e){return[]}})();
   let useLayers=false;
-  if(nLayers.length>1)useLayers=confirm(`«${f.name}» має шарів: ${nLayers.length}.\n\nOK — додати кожен шар окремим фото.\nСкасувати — додати одне зведене зображення.`);
+  if(nLayers.length>1&&!flat)useLayers=confirm(`«${f.name}» має шарів: ${nLayers.length}.\n\nOK — додати кожен шар окремим фото.\nСкасувати — додати одне зведене зображення.`);
   if(useLayers){
     for(const L of nLayers){
       const blob=await psdToPngBlob(L.img,L.w,L.h);
@@ -2220,7 +2489,7 @@ async function doNew(){
 
 /* ======================= global click handling ======================= */
 document.addEventListener('click',e=>{
-  const t=e.target.closest('[data-act],[data-tab],[data-lay],[data-img],[data-shape],[data-sticker],[data-tx],[data-bg],[data-bgscope],[data-bgpick],[data-font],[data-th],[data-tcol],[data-rtt],[data-szstep],[data-al],.sp');
+  const t=e.target.closest('[data-act],[data-tab],[data-lay],[data-laymode],[data-img],[data-shape],[data-sticker],[data-tx],[data-bg],[data-bgscope],[data-bgpick],[data-font],[data-th],[data-tcol],[data-rtt],[data-szstep],[data-al],.sp');
   if(!t)return;
   if(t.dataset.act){
     const a=t.dataset.act;
@@ -2235,6 +2504,11 @@ document.addEventListener('click',e=>{
       case'export':openExport();break;case'runExport':runExport();break;
       case'saveExport':if(expResult)saveBlob(expResult.filename,expResult.blob,'Файл збережено');break;
       case'close':closeModal();break;
+      case'tplup':$('#fileTpl').click();break;
+      case'tpldel':{cur().items=cur().items.filter(i=>!i.tpl);state.sel=null;commit();renderPanel();redraw();thumbsAll();toast('Свій макет прибрано');break}
+      case'ordcover':{const nm=((P.order&&P.order.names)||'').split('\n').map(x=>x.trim()).filter(Boolean)[0];if(!nm)break;gotoSpread(0);const pr=Object.assign({},TEXT_PRESETS.find(q=>q.k==='script'),{t:nm});addItem(mkText(pr));toast('Ім’я додано на обкладинку');break}
+      case'spmenu':{e.stopPropagation();const i=+t.dataset.i;gotoSpread(i);openModal(`<h2>${spreadLabel(i)}</h2><div class="btnrow" style="flex-direction:column;align-items:stretch">${i?`<button class="btn" data-act="spdo" data-do="dup">Дублювати</button><button class="btn" data-act="spdo" data-do="up">Перемістити вгору</button><button class="btn" data-act="spdo" data-do="down">Перемістити вниз</button>`:''}<button class="btn" data-act="spdo" data-do="clear">Очистити розворот</button>${i?`<button class="btn danger" data-act="spdo" data-do="del">Видалити</button>`:''}<button class="btn" data-act="close">Закрити</button></div>`);break}
+      case'spdo':{const d=t.dataset.do;closeModal();if(d==='dup')dupSpread();else if(d==='up')moveSpread(-1);else if(d==='down')moveSpread(1);else if(d==='del')delSpread();else if(d==='clear'){const sp=cur();sp.items=sp.items.filter(x=>x.type==='photo').map(x=>(x.img=null,x));state.sel=null;commit();renderList();renderPanel();redraw();toast('Розворот очищено')}break}
       case'upload':$('#fileImg').click();break;
       case'bgapply':{const src=JSON.parse(JSON.stringify(cur().bg));bgTargets().forEach(x=>x.bg=JSON.parse(JSON.stringify(src)));commit();redraw();thumbsAll();toast('Фон застосовано');break}
       case'uploadSt':$('#fileSt').click();break;
@@ -2261,6 +2535,8 @@ document.addEventListener('click',e=>{
       case'clearimg':{const it=getSel();if(it){it.img=null;commit();renderPanelKeepScroll();redraw()}break}
       case'tfup':{const it=getSel();if(it){it.tf=it.tf==='upper'?'none':'upper';fitText(it);commit();rtRerender();redraw()}break}
       case'rtclear':{const it=getSel();if(it){const ta=rtTA();rtSaveSel();delete it.sp;const o=TEXT_PRESETS.find(p=>p.font===it.font)||{};it.b=false;it.it=false;it.ul=false;fitText(it);commit();rtRerender();redraw()}break}
+      case'fontup':$('#fileFont').click();break;
+      case'fontlocal':importLocalFonts();break;
       case'fontpick':state.fontOpen=!state.fontOpen;renderPanelKeepScroll();break;
       case'tbg':{const it=getSel();if(it){it.bg=it.bg?'':'#f3e1b5';if(it.bg&&!it.pad)it.pad=2;commit();renderPanelKeepScroll();redraw()}break}
       case'tog':{const it=getSel();if(it){if(t.dataset.v==='tf')it.tf=it.tf==='upper'?'none':'upper';else it[t.dataset.v]=!it[t.dataset.v];fitText(it);ensureFont(it);commit();renderPanelKeepScroll();redraw()}break}
@@ -2271,6 +2547,7 @@ document.addEventListener('click',e=>{
   if(t.dataset.th){applyTheme(t.dataset.th);return}
   if(t.dataset.tab){const app=$('#app');if(!app.classList.contains('sc')&&t.dataset.tab===state.tab&&!t.disabled){app.classList.add('sc');renderPanel();return}app.classList.remove('sc')}
   if(t.dataset.tab){if(t.disabled)return;if(t.dataset.tab!=='obj')state.prevTab=t.dataset.tab;state.tab=t.dataset.tab;renderPanel();return}
+  if(t.dataset.laymode){state.layMode=t.dataset.laymode;renderPanel();return}
   if(t.dataset.lay){applyLayoutById(t.dataset.lay);commit();renderPanel();return}
   if(t.dataset.img){placeImage(t.dataset.img);return}
   if(t.dataset.sticker){if(IMGS.has(t.dataset.sticker))addItem(mkSticker(t.dataset.sticker));return}
@@ -2316,6 +2593,46 @@ $('#fileSt').addEventListener('change',async e=>{
   }
   if(last){addItem(mkSticker(last));toast('Фігуру додано до бібліотеки')}
   state.tab='shapes';renderPanel();
+});
+async function tplHoles(bmp){
+  const sc=Math.min(1,240/Math.max(bmp.width,bmp.height)),w=Math.max(8,Math.round(bmp.width*sc)),h=Math.max(8,Math.round(bmp.height*sc));
+  const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(bmp,0,0,w,h);
+  const d=x.getImageData(0,0,w,h).data,seen=new Uint8Array(w*h),out=[];
+  for(let i=0;i<w*h;i++){
+    if(seen[i]||d[i*4+3]>=40)continue;
+    let x0=w,y0=h,x1=0,y1=0,n=0;const st=[i];seen[i]=1;
+    while(st.length){const q=st.pop(),qx=q%w,qy=(q/w)|0;n++;if(qx<x0)x0=qx;if(qx>x1)x1=qx;if(qy<y0)y0=qy;if(qy>y1)y1=qy;
+      for(const[nx,ny]of[[qx+1,qy],[qx-1,qy],[qx,qy+1],[qx,qy-1]]){if(nx<0||ny<0||nx>=w||ny>=h)continue;const k=ny*w+nx;if(!seen[k]&&d[k*4+3]<40){seen[k]=1;st.push(k)}}}
+    const bw=x1-x0+1,bh=y1-y0+1;
+    if(n>=w*h*.012&&n/(bw*bh)>=.6)out.push([x0/w,y0/h,bw/w,bh/h]);
+  }
+  out.sort((a,b)=>(Math.abs(a[1]-b[1])<.05?a[0]-b[0]:a[1]-b[1]));
+  return out.slice(0,24);
+}
+$('#fileFont').addEventListener('change',e=>{const f=[...e.target.files];e.target.value='';if(f.length)addUserFonts(f)});
+$('#fileTpl').addEventListener('change',async e=>{
+  const f=e.target.files[0];e.target.value='';if(!f)return;
+  try{
+    toast('Завантаження макета…',true);
+    let rec;
+    if(/\.psd$/i.test(f.name)){const ids=await importPSD(f,true);rec=IMGS.get(ids[0]);const m=P.images.find(q=>q.id===ids[0]);if(m)m.bg=true}
+    else rec=await registerImage(f,f.name,null,{bg:true});
+    const bmp=await bitmapOf(rec.blob),holes=await tplHoles(bmp);
+    const sp=cur(),Wd=spreadW(sp),H=P.ph,half=Wd/2,side=sp.kind==='cover'?'spread':state.layMode;
+    const rx=side==='right'?half:0,rw=side==='spread'?Wd:half;
+    const k=Math.min(rw/rec.w,H/rec.h),ow=rec.w*k,oh=rec.h*k,ox=rx+(rw-ow)/2,oy=(H-oh)/2;
+    const inReg=i=>side==='spread'||((i.x+i.w/2<half)===(side==='left'));
+    sp.items=sp.items.filter(i=>!(i.tpl&&inReg(i)));
+    const ov=mkSticker(rec.id);Object.assign(ov,{x:ox,y:oy,w:ow,h:oh,tpl:true,pass:true});
+    if(holes.length){
+      const old=sp.items.filter(i=>i.type==='photo'&&inReg(i)),imgs=old.map(i=>i.img).filter(Boolean);
+      const keepP=sp.items.filter(i=>i.type==='photo'&&!inReg(i)),rest=sp.items.filter(i=>i.type!=='photo');
+      const ph=holes.map((r,i)=>mkPhoto([ox+r[0]*ow,oy+r[1]*oh,r[2]*ow,r[3]*oh],imgs[i]||null));
+      sp.items=[...keepP,...ph,ov,...rest];sp.lay=null;
+      toast(`Макет додано: рамок для фото — ${holes.length}`);
+    }else{sp.items=[ov,...sp.items];toast('Макет додано як підкладку')}
+    state.sel=null;commit();renderPanel();redraw();thumbsAll();
+  }catch(err){console.warn(err);toast(/PSD|PSB|Режим|біт|Максим/.test(err.message)?err.message:'Не вдалося прочитати файл макета')}
 });
 $('#fileBg').addEventListener('change',async e=>{
   const f=e.target.files[0];e.target.value='';if(!f)return;
@@ -2365,6 +2682,8 @@ async function init(){
   readColors();
   getDL();
   try{idb=await idbOpen();hasIDB=true}catch(e){hasIDB=false}
+  new MutationObserver(()=>{if(panelEl.querySelector('.fontlist'))lazyFonts()}).observe(panelEl,{childList:true,subtree:false});
+  await loadUserFonts();
   let loaded=false;
   if(hasIDB){
     try{
